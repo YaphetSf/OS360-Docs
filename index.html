@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OS360 Documentation</title>
+    <title>OS360 - Professional Gimbal Control System</title>
     <style>
         * {
             margin: 0;
@@ -22,53 +22,102 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 20px;
         }
 
-        .header {
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
             text-align: center;
-            margin-bottom: 3rem;
+            padding: 4rem 0;
             color: white;
         }
 
-        .header h1 {
-            font-size: 3rem;
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .content {
-            background: white;
-            border-radius: 15px;
-            padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .hero p {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-        }
-
-        .welcome-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .welcome-section h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .welcome-section p {
-            font-size: 1.1rem;
-            color: #666;
+            opacity: 0.9;
             max-width: 600px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
         }
 
         .features {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -76,22 +125,29 @@
         }
 
         .feature-card {
-            background: #f8f9fa;
+            background: white;
             padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
         }
 
         .feature-card h3 {
-            color: #2c3e50;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            color: #333;
         }
 
         .feature-card p {
@@ -99,120 +155,383 @@
             line-height: 1.6;
         }
 
-        .cta-section {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            color: white;
+        .system-architecture {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
-        .cta-section h3 {
-            font-size: 1.8rem;
+        .system-architecture h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .architecture-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .component {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 200px;
+            border: 2px solid #667eea;
+        }
+
+        .component h3 {
+            color: #667eea;
             margin-bottom: 1rem;
         }
 
-        .cta-section p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
+        .component p {
+            color: #666;
+            font-size: 0.9rem;
         }
 
-        .btn {
-            display: inline-block;
-            background: white;
+        .arrow {
+            font-size: 2rem;
             color: #667eea;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .specifications {
+            padding: 4rem 0;
+            background: white;
         }
 
-        .footer {
+        .specifications h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spec-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .spec-category h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            color: #666;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-list strong {
+            color: #333;
+        }
+
+        .download-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             text-align: center;
             color: white;
-            opacity: 0.8;
-            margin-top: 2rem;
+        }
+
+        .download-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            
-            .content {
-                padding: 2rem;
+
+            .hero p {
+                font-size: 1.1rem;
             }
-            
-            .features {
-                grid-template-columns: 1fr;
+
+            .nav-links {
+                display: none;
+            }
+
+            .architecture-diagram {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>OS360 Documentation</h1>
-            <p>Your comprehensive guide to operating systems</p>
-        </header>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">OS360</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#specifications">Specifications</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <main class="content">
-            <section class="welcome-section">
-                <h2>Welcome to OS360</h2>
-                <p>Explore the world of operating systems with our comprehensive documentation, tutorials, and resources designed for both beginners and advanced users.</p>
-            </section>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>OS360</h1>
+                <p>Professional Gimbal Control System for Cinema and Broadcast Applications</p>
+                <a href="#download" class="cta-button">Get Started</a>
+            </div>
+        </section>
 
-            <section class="features">
-                <div class="feature-card">
-                    <h3>📚 Comprehensive Guides</h3>
-                    <p>Detailed documentation covering all major operating systems including Windows, macOS, Linux, and mobile platforms.</p>
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Professional Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎛️</div>
+                        <h3>Real-Time Control</h3>
+                        <p>Precise PID tuning and power control for all gimbal axes with live parameter feedback and monitoring.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>iOS Application</h3>
+                        <p>Professional SwiftUI interface optimized for field use with modern design and haptic feedback.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Profile Management</h3>
+                        <p>5 customizable parameter profiles with instant switching, import/export, and auto-sync capabilities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>ESP32 Bridge</h3>
+                        <p>WiFi access point and TCP server providing reliable communication between iOS app and gimbal hardware.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>Automation</h3>
+                        <p>5 programmable automation slots with custom script creation and execution for complex operations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Multi-Device Support</h3>
+                        <p>Optimized interfaces for AR and Trinity gimbal series with specialized control layouts.</p>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="feature-card">
-                    <h3>🛠️ Practical Tutorials</h3>
-                    <p>Step-by-step tutorials with real-world examples to help you master operating system concepts and administration.</p>
+        <section id="architecture" class="system-architecture">
+            <div class="container">
+                <h2>System Architecture</h2>
+                <div class="architecture-diagram">
+                    <div class="component">
+                        <h3>iOS App</h3>
+                        <p>SwiftUI Interface<br>Profile Management<br>Real-time Control</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="component">
+                        <h3>ESP32 Bridge</h3>
+                        <p>WiFi Access Point<br>TCP Server<br>Protocol Translation</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="component">
+                        <h3>Gimbal Hardware</h3>
+                        <p>UART Communication<br>Motor Control<br>Sensor Data</p>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="feature-card">
-                    <h3>🔧 Troubleshooting</h3>
-                    <p>Common issues and their solutions, troubleshooting guides, and best practices for system maintenance.</p>
+        <section id="specifications" class="specifications">
+            <div class="container">
+                <h2>Technical Specifications</h2>
+                <div class="specs-grid">
+                    <div class="spec-category">
+                        <h3>ESP32 Bridge</h3>
+                        <ul class="spec-list">
+                            <li><strong>WiFi:</strong> 802.11 b/g/n (2.4GHz)</li>
+                            <li><strong>Power:</strong> 20dBm maximum transmit power</li>
+                            <li><strong>UART:</strong> 115200 baud, 8N1 configuration</li>
+                            <li><strong>Protocol:</strong> Custom binary with CRC16 validation</li>
+                            <li><strong>Heartbeat:</strong> 5-second interval</li>
+                        </ul>
+                    </div>
+                    <div class="spec-category">
+                        <h3>iOS Application</h3>
+                        <ul class="spec-list">
+                            <li><strong>Platform:</strong> iOS 14.0+</li>
+                            <li><strong>Framework:</strong> SwiftUI with Combine</li>
+                            <li><strong>Networking:</strong> TCP socket communication</li>
+                            <li><strong>Storage:</strong> Core Data with UserDefaults</li>
+                            <li><strong>Threading:</strong> Async/await with actors</li>
+                        </ul>
+                    </div>
+                    <div class="spec-category">
+                        <h3>Communication</h3>
+                        <ul class="spec-list">
+                            <li><strong>Protocol:</strong> Custom binary over TCP</li>
+                            <li><strong>Port:</strong> 23 (standard telnet port)</li>
+                            <li><strong>Validation:</strong> CRC16 polynomial 0x8005</li>
+                            <li><strong>State Machine:</strong> Robust packet parsing</li>
+                            <li><strong>Error Handling:</strong> Auto-reconnection</li>
+                        </ul>
+                    </div>
+                    <div class="spec-category">
+                        <h3>Control Parameters</h3>
+                        <ul class="spec-list">
+                            <li><strong>PID:</strong> P, I, D for each axis</li>
+                            <li><strong>Power:</strong> Motor power levels</li>
+                            <li><strong>Follow:</strong> Speed and filtering</li>
+                            <li><strong>RC:</strong> Remote control settings</li>
+                            <li><strong>Limits:</strong> Position constraints</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="feature-card">
-                    <h3>🚀 Performance Optimization</h3>
-                    <p>Learn how to optimize your system performance, manage resources efficiently, and maintain peak performance.</p>
+        <section id="download" class="download-section">
+            <div class="container">
+                <h2>Get OS360</h2>
+                <p>Download the complete system including ESP32 firmware and iOS application</p>
+                <div class="download-buttons">
+                    <a href="https://github.com/your-org/os360" class="download-btn">GitHub Repository</a>
+                    <a href="privacy-policy.html" class="download-btn">Privacy Policy</a>
+                    <a href="mailto:osproducts@opticalsupport.com" class="download-btn">Contact Support</a>
                 </div>
+            </div>
+        </section>
+    </main>
 
-                <div class="feature-card">
-                    <h3>🔒 Security Best Practices</h3>
-                    <p>Essential security guidelines, hardening techniques, and protection strategies for modern operating systems.</p>
-                </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Optical Support. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:osproducts@opticalsupport.com">Support</a></li>
+                    <li><a href="#features">Features</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
-                <div class="feature-card">
-                    <h3>📱 Cross-Platform</h3>
-                    <p>Resources covering desktop, mobile, and server operating systems with platform-specific insights and tips.</p>
-                </div>
-            </section>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-            <section class="cta-section">
-                <h3>Ready to Get Started?</h3>
-                <p>Begin your journey into the fascinating world of operating systems with our comprehensive documentation.</p>
-                <a href="#" class="btn">Explore Documentation</a>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2024 OS360 Documentation. Built with ❤️ for the community.</p>
-        </footer>
-    </div>
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
