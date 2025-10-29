@@ -11,7 +11,7 @@ OS360 provides professional-grade gimbal control capabilities for cinema and bro
 ### ESP32 WiFi Bridge (`ESP_Wifi/`)
 - **Hardware**: ESP32 microcontroller
 - **Function**: WiFi Access Point and TCP server
-- **Network**: Creates "OS_AR_001" WiFi network (password: "OS_AR_001")
+- **Network**: Creates "OS_AR_00X" WiFi network (password: "OS_AR_00X")
 - **Protocol**: Custom binary protocol over TCP port 23
 - **UART**: Communicates with gimbal hardware via UART1 (115200 baud)
 
@@ -157,18 +157,9 @@ This project is proprietary software developed by Optical Support. All rights re
 ## 🤝 Support
 
 For technical support and inquiries:
-- **Email**: osproducts@opticalsupport.com
-- **Documentation**: See project documentation files
-- **Issues**: Report bugs and feature requests through appropriate channels
-
-## 🔄 Version History
-
-- **v1.0**: Initial release with basic PID control and profile management
-- **v1.1**: Added automation slots and script management
-- **v1.2**: Enhanced UI with themes and improved connectivity
-- **v1.3**: Added Trinity series support and advanced features
+- **Email**: ding.z@opticalsupport.com
+- **Issues**: Report bugs and feature requests through the email above
 
 ---
 
-**OS360** - Professional Gimbal Control System  
-*Precision Control for Professional Applications*
+*OS360 - Where creativity meets precision*
